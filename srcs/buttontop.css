@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0;
     right: 12px;
-    display: flex;
+    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     will-change: transfrom;
