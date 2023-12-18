@@ -10,9 +10,9 @@ maxPatternLength: 32,
 minMatchCharLength: 1,
 keys: [
 {name:"title",weight:0.8},
-{name:"contents",weight:0.5},
+{name:"content",weight:0.5},
 {name:"tags",weight:0.3},
-{name:"categories",weight:0.3}
+{name:"permalink",weight:0.3}
 ]
 };
 
@@ -36,7 +36,7 @@ console.log({"matches":result});
 if(result.length > 0){
 populateResults(result);
 }else{
-$('#search-results').append("<p>No matches found</p>");
+$('#search-results').append("<p>No matches found...</p>");
 }
 });
 }
@@ -51,9 +51,9 @@ if( fuseOptions.tokenize ){
 snippetHighlights.push(searchQuery);
 }else{
 $.each(value.matches,function(matchKey,mvalue){
-if(mvalue.key == "tags" || mvalue.key == "categories" ){
+if(mvalue.key == "tags" || mvalue.key == "permalink" ){
 snippetHighlights.push(mvalue.value);
-}else if(mvalue.key == "contents"){
+}else if(mvalue.key == "content"){
 start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
 end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
 snippet += contents.substring(start,end);
