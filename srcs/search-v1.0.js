@@ -41,6 +41,11 @@ $('#search-results').append("<p>No matches found...</p>");
 });
 }
 
+function formatDate(dateString) {
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+return new Date(dateString).toLocaleDateString('en-US', options);
+}
+
 function populateResults(result){
 $.each(result,function(key,value){
 var contents= value.item.contents;
@@ -68,7 +73,7 @@ snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indice
     //pull template from hugo templarte definition
     var templateDefinition = $('#search-result-template').html();
     //replace values
-    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,type:value.item.type,date:value.item.date,snippet:snippet});
+    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,type:value.item.type,date:formatDate(value.item.date),snippet:snippet});
     $('#search-results').append(output);
 
     $.each(snippetHighlights,function(snipkey,snipvalue){
