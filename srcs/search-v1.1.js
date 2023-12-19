@@ -36,7 +36,7 @@ console.log({"matches":result});
 if(result.length > 0){
 populateResults(result);
 }else{
-$('#search-results').append("<p>No matches found</p>");
+$('#search-results').append("<p>No matches found...</p>");
 }
 });
 }
